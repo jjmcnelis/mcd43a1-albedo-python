@@ -8,11 +8,12 @@ The MODIS BRDF/Albedo/NBAR Product MCD43 is led by [Professor Crystal Schaaf at 
 ## Paths
 
 ### Processing
-* [floridaproc.ipynb](floridaproc.ipynb) -- comprehensive documentation of workflow
-* [data/MCD43-FloridaUSGS-2018-request.json](data/MCD43-FloridaUSGS-2018-request.json) -- request JSON with which you can download an identical slice of MCD43 from APPEEARS: [https://lpdaacsvc.cr.usgs.gov/appeears/](https://lpdaacsvc.cr.usgs.gov/appeears/)
+* [proc.ipynb](proc.ipynb) -- comprehensive documentation of workflow
+* [data/MCD43A1/MCD43A1-request.json](data/MCD43A1/MCD43A1-request.json) -- request JSON to request an identical subset of MCD43A1 from APPEEARS: [https://lpdaacsvc.cr.usgs.gov/appeears/](https://lpdaacsvc.cr.usgs.gov/appeears/)
+* [data/MCD43A3/MCD43-FloridaUSGS-2018-request.json](data/MCD43A3/MCD43-FloridaUSGS-2018-request.json) -- and for MCD43A3 [https://lpdaacsvc.cr.usgs.gov/appeears/](https://lpdaacsvc.cr.usgs.gov/appeears/)
 * 
 
 ### Albedo source code
-* [code/albedo/](code/albedo/) -- albedo binaries compile directory
-* [code/szn/](code/szn/) -- solar zenith number binary compile directory
-* [code/albedo/readme](code/albedo/readme) -- readme gives a succinct description of the albedo formulas. I print the information from that file throughout the workflow description in the ipython notebook.
+* (proc/actual_albedo_tool/albedo)[.../albedo/] -- albedo compile directory
+* (proc/actual_albedo_tool/szn/)[.../szn/] -- solar zenith number compile directory
+* (proc/actual_albedo_tool/albedo/readme)[.../albedo/readme] -- readme gives a succinct description of albedo calculation.
