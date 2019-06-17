@@ -1,0 +1,166 @@
+Readme file for actual albedo calculation
+
+SKYL LUT
+--------
+
+The fraction of diffuse light (SKYL) changes with solar zenith
+angle, optical depth, bands and aerosol model types. In order to
+obtain SKYL easily and quickly, a SKYL lookup table was
+established with the help of the 6S code. In the lookup table, 90
+solar zenith angle (0 to 89 degrees with a 1 degree step), 50
+optical depths (0 to 1.0 with 0.02 step), 10 bands (7 MODIS land
+bands and 3 broad bands) and 2 aerosol model types (continental
+and maritime) were pre-calculated. The total numbers of elements
+in the MODIS lookup table is: 2 (aerosol model types) * 10
+(bands) * 90 (szns) * 50 (optical depth) = 90,000. The LUT file
+generated for MODIS spectral bands is called "skyl_lut.dat".
+
+           # Spectral bands for MODIS 
+           # bands:        0: 0.620-0.670  (red)
+           #               1: 0.841-0.876  (nir)
+           #               2: 0.459-0.479
+           #               3: 0.545-0.565
+           #               4: 1.230-1.250
+           #               5: 1.628-1.652
+           #               6: 2.105-2.155
+           #          BB   7: 0.400-0.700  (vis)
+           #          BB   8: 0.700-4.000  (nir)
+           #          BB   9: 0.250-4.000  (sw) 
+
+
+Calculation of WSA and BSA
+--------------------------
+
+The program read the BRDF parameters from out1. Black-sky
+albedos are calculated according to the following polynomial albedo
+representation.
+
+BSA(SZN,BAND)=  F_iso(BAND)*(G_0iso+G_1iso*SZN^2+G_2iso*SZN^3)
+              + F_vol(BAND)*(G_0vol+G_1vol*SZN^2+G_2vol*SZN^3)
+              + F_geo(BAND)*(G_0geo+G_1geo*SZN^2+G_2geo*SNZ^3)
+
+                      K=iso       k=vol           k=geo
+G_0k(term 1)           1.0      -0.007574       -1.284909
+G_1k(term SZN^2)       0.0      -0.070987       -0.166314       
+G_2k(term SZN^3)       0.0       0.307588        0.041840       
+WSA                    1.0       0.189184       -1.377622
+
+
+actual_albedo(SZN,BAND,OD,AMT) = WSA(BAND) * SKYL(SZN,BAND,OD,AMT) + 
+                             BSA(SZN,BAND) * (1-SKYL(SZN,BAND,OD,AMT))
+
+SZN:  solar zenith angle
+BAND: band wavelength
+OD:   optical depth
+AMT:  aerosol model type
+
+
+Usage
+-----
+
+* Usage: actual_albedo_hdf.exe [-par][-od][-szn][-out] 
+
+  This program reads the BRDF/albedo product (out1) (assuming the
+  format of the MODIS MOD43B output -- ie MCD43A1.out1), computes
+  the black and white sky albedos (with a simple polynomial
+  equation, Lucht et al., 2000) and then assuming optical depth and
+  solar zenith angle are inputs, computes the actual albedo (a
+  linear combination of white and black-sky albedo) and writes it
+  out in HDF format.
+
+  -par <par_file>      input out1 result file (in HDF format)
+  -od  <optical_depth> input optical depth (float, range: 0.0-1.0)
+  -szn <solar_zenith>  input solar zenith angle you want to compute
+                       (float, range: 0.0-89.0 degrees)\n");
+  -out <albedo_file>   output file to save actual albedo (in HDF format)
+
+  SKYL lookup table "skyl_lut.dat" should exist in the current
+  directory. 
+
+
+* Usage: actual_albedo_bin.exe [-iso][-vol][-geo][-band][-od][-szn][-out] 
+  
+  This program computes the actual albedo same as actual_albedo_hdf.exe
+  except it accepts the binary BRDF parameters as inputs. You can convert 
+  MCD43A1 (BRDF/Albedo parameter) in HDF format to binary format using
+  the MODIS Reprojection Tools (MRT). The MRT is a free software and can 
+  be downloaded from 
+  http://edc.usgs.gov/programs/sddm/modisdist/index.shtml
+  
+   -iso  <f_iso_file>    input MCD43A1 isotropic binary file (Parameters_01)
+   -vol  <f_vol_file>    input MCD43A1 volumetric binary file (Parameters_02)
+   -geo  <f_geo_file>    input MCD43A1 geometric binary file (Parameters_03)
+   -band <band_no>       input band no in the MCD43A1 (1-10)
+   -od   <optical_depth> input optical depth (float, range: 0.0-1.0)
+   -szn  <solar_zenith>  input solar zenith angle you want to compute
+                         (float, range: 0.0-89.0 degrees)
+   -out  <albedo_file>   output file to save actual albedo in binary
+
+
+* Usage: polynomial_bsa.c <in_par0> <in_par1> <in_par2> <out_bsa> <szn>
+  (added January 2002)
+
+  A simple sample program to calculate black-sky albedo at given solar
+  zenith angle with polynomial equation (see Wolfgang Lucht et. al., IEEE 
+  TGRAS, Vol. 38, No.2, PP977-998). It accepts binary file as inputs.
+
+
+* Usage: tell_skyl.exe [-od][-szn] 
+  (added July 2002)
+
+  Calculate fraction of diffuse skylight through a look-up table
+  which was pre-calculated with the 6S code for seven MODIS land spectral 
+  bands plus three broadbands (visible, NIR and shortwave)
+
+  -od  <optical_depth>   aerosol optical depth at 550nm [0..1]
+  -szn <solar_zenith>    solar zenith angle [0..89]
+
+
+* Usage: tell_albedo.exe [-par][-fd][-szn] 
+  (added July 2002)
+
+  Calculate black-sky, white-sky and actual albedo for a single pixel
+  by accepting the following command line parameters:
+
+  -par <f_iso> <f_geo> <f_vol>    parameters for three kernels
+    They should be entered in the sequence of f_iso, f_vol and f_geo 
+    (same as in the MCD43A1) and should be the actual float number. 
+    Please note the file values in MCD43A1 are the scaled interger 
+    numbers. They should be re-scaled to the actual values by dividing by
+    1000. Normally, these parameters are in the range of [0..1]
+  -fd <fraction_diffuse>          fraction of the diffuse light
+    You can use your own estimation or by running program "tell_skyl.exe" 
+    to get the estimation from a pre-defined lookup table. The data range
+    should be [0..1]
+  -szn <solar_zenith>             solar zenith angle in degree
+    data range should be between 0 and 89 degrees  
+
+
+Files in the package
+--------------------
+
+readme: this file
+
+skyl_lut.dat: SKYL lookup table. 
+
+actual_albedo_bin.c:   source program for binary version
+(compile with cc actual_albedo_bin.c -o actual_albedo_bin.exe) 
+
+actual_albedo_hdf.c 
+actual_albedo_hdf.mk:  makefile. (use COMP_FLAGS = -DAVHRR for avhrr
+        data, otherwise it generally assumes modis data as the input)
+actual_albedo_hdf.exe: executable SGI IRIX program for MODIS data
+
+tell_skyl.c
+(compile with: cc tell_skyl.c -o tell_skyl.exe)
+
+tell_albedo.c
+(compile with: cc tell_albedo.c -o tell_albedo.exe)
+
+polynomial_bsa.c
+(compile with: cc polynomial_bsa.c -o polynomial_bsa.exe)
+
+
+//wzs_0712  important
+for the input parameters data , now can only read V4 data not V5 data because the structers are different
+ like V4 is 4 dimention and V5 is 3 dimention data

@@ -1,0 +1,6 @@
+NOTES:
+
+> ./local_szn.1.exe lat days_since_20000101
+lat ##.##### day #### lszn ##.#######
+
+> ./

@@ -1,0 +1,6 @@
+cc  albedo.ascii.file.2.c   -g -o    albedo.ascii.file.2.exe
+
+albedo.ascii.file.2.exe    albedo.test.in2 65.568601 .2 8
+
+#get 3 lines of
+#bsa 0.030571 wsa 0.026897 actual 0.029061
