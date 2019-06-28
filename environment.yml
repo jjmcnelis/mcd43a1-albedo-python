@@ -1,0 +1,19 @@
+name: ProcMCD43A1
+channels:
+- conda-forge
+- defaults
+dependencies:
+- numpy
+- pandas
+- netCDF4
+- xarray
+- datetime
+- warnings
+- matplotlib
+- ipywidgets
+- cartopy
+- pyproj
+- math
+- sys
+- io
+- os
