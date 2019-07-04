@@ -120,11 +120,11 @@ The difference between our time series and the one computed by the ORNL DAAC (*s
 
 <!-- BROWSE4 -->
 <figure class="image">
-  <img src="docs/img/fig4.png" alt="{{ include.description }}" style="display: block; margin-left: auto; margin-right: auto; height: 75%;">
+  <img src="docs/img/fig4.png" alt="{{ include.description }}" style="display: block; margin-left: auto; margin-right: auto; width: 75%;">
   <figcaption style="display: block; margin-left: auto; margin-right: auto; width: 55%; text-align:center"><i>Figure 4. Difference of black sky albedo rasters (2) for January 1, 2018: a. released in MCD43A3 standard product, and, b. computed in this workflow.</i></figcaption>
 </figure>
 
-Figure 3 depicts the differenced black sky albedo rasters for January 1, 2018 computed by **(1)** the SIPS for the standard black and white sky albedo product (MCD43A3) and **(2)** this workflow.
+Figure 4 depicts the differenced black sky albedo rasters for January 1, 2018 computed by **(1)** the SIPS for the standard black and white sky albedo product (MCD43A3) and **(2)** this workflow.
 
 <!-- LICENSE -->
 ## License
