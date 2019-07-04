@@ -114,15 +114,17 @@ You have two options:
 Go to the [first notebook (1_Workflow.ipynb)](1_Workflow.ipynb) for more details about data access.
 
 ## Outputs
-The figure and text below explain a little bit about how I validated the workflow against MCD43A1 albedos computed by the ORNL DAAC's MODIS Global Tool (Figure 2) and the standard black and white sky albedos from the MCD43A3 product (Figure 3).
+The figure and text below explain a little bit about how I validated the workflow against MCD43A1 albedos computed by the ORNL DAAC's MODIS Global Tool (Figure 2) and the standard black and white sky albedos from the MCD43A3 product (Figure 4).
 
-The difference between our time series and the one computed by the ORNL DAAC (*see Figure 2 above*) is negligible, purely rounding error; and, if you check the plot above, it's obviously related to the zenith angle. The concave shape of the curve resembles the zenith angle change through the year. The disparity (see y-axis precision in scientific notation at the top of y1-axis) comes from the ORNL DAAC's zenith angle calculator. It returns five decimal places. I didn't do any rounding so we're using the max precision allowed by `numpy`, some huge number of decimal places.
+The difference between our time series and the one computed by the ORNL DAAC (*see Figure 2 above*) is negligible, purely rounding error; and, if you check the plot above, it's obviously related to the zenith angle. The concave shape of the curve resembles the zenith angle change through the year. The disparity (see y-axis precision in scientific notation at the top of y1-axis) comes from the ORNL DAAC's zenith angle calculator. It returns five decimal places. I didn't do any rounding so we're using the max precision allowed by `numpy`, some huge number of decimal places.        
+
 
 <!-- BROWSE4 -->
 <figure class="image">
-  <img src="docs/img/fig4.png" alt="{{ include.description }}" style="display: block; margin-left: auto; margin-right: auto; width: 75%;">
+  <img src="docs/img/fig4.png" alt="{{ include.description }}" style="display: block; margin-left: auto; margin-right: auto;">
   <figcaption style="display: block; margin-left: auto; margin-right: auto; width: 55%; text-align:center"><i>Figure 4. Difference of black sky albedo rasters (2) for January 1, 2018: a. released in MCD43A3 standard product, and, b. computed in this workflow.</i></figcaption>
-</figure>
+</figure>       
+      
 
 Figure 4 depicts the differenced black sky albedo rasters for January 1, 2018 computed by **(1)** the SIPS for the standard black and white sky albedo product (MCD43A3) and **(2)** this workflow.
 
