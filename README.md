@@ -34,8 +34,11 @@
     <a href="https://github.com/jjmcnelis/mcd43a1-albedo-python/issues">Report a Bug</a>
   </p>
 </p>
-
-
+http://192.168.1.135:8888/notebooks/0_Introduction.ipynb
+<figure class="image">
+  <img src="docs/img/browse_interact.png" alt="{{ include.description }}">
+  <figcaption><i>Interactive widgets like this one from the <a href="0_Introduction.ipynb#Blue-sky-albedo">introduction</a> help us understand the relationship between the computed albedo and its input parameters.</i></figcaption>
+</figure>
 
 <!-- TABLE OF CONTENTS -->
 ## Table of Contents
@@ -67,12 +70,13 @@ While some users are content to use the MODIS black sky albedo at local solar no
         <td style="text-align:left">Bundle workflow into a few functions and loop.</td>
     </tr>
     <tr>
-        <td style="text-align:left"><a href="3_Results.ipynb">3_Results.ipynb</a></td>
-        <td style="text-align:left">Calculate statistics and plot. Write outputs for Florida USGS evapotranspiration model. <b>(WIP)</b></td>
+        <td style="text-align:left"><a href="3_Validate.ipynb">3_Validate.ipynb</a></td>
+        <td style="text-align:left">Check results against MCD43A3 albedos.</td>
     </tr>
     <tr>
-        <td style="text-align:left"><a href="4_Validate.ipynb">4_Validate.ipynb</a></td>
-        <td style="text-align:left">Check results against MCD43A3 albedos.</td>
+        <td style="text-align:left"><a href="4_Results.ipynb">4_Results.ipynb</a></td>
+        <td style="text-align:left">Calculate stats and plot. Also write outputs for Florida USGS evapotranspiration model. <b>(WIP)</b></td>
+    </tr>
     <tr>
         <td style="text-align:left"><a href="5_HDFs.ipynb">5_HDFs.ipynb</a></td>
         <td style="text-align:left">AppEEARS alternative, processing HDFs. <b>(WIP)</b></td>
