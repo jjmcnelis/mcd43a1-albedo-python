@@ -1,9 +1,10 @@
 # Daily albedos from MODIS BRDF Parameters (MCD43A1)
 
-Comprehensive Python workflow for calculating black-, white-, and blue-sky albedos from MODIS MCD43A1 BRDF/Albedo model parameters product using **custom solar zenith angles and optical depth** inputs. Input MCD43A1 netCDF from AppEEARS; flexible outputs.
+Comprehensive Python workflow for calculating black-, white-, and blue-sky albedos from the MODIS BRDF model parameters product ([MCD43A1](https://www.umb.edu/spectralmass/terra_aqua_modis/modis_brdf_albedo_product_mcd43)) using **custom solar zenith angles and optical depth** inputs. 
 
-![bsa](proc/img/bsa.png)
-*Black sky albedo time series from [0_Introduction.ipynb](0_Introduction.ipynb).*
+The plot below depicts the *differenced* daily black sky albedo time series (2x) for a single pixel in central Florida as computed by: **(1)** *you* in the notebooks [1_Workflow.ipynb](1_Workflow.ipynb) and [2_Batch.ipynb](2_Batch.ipynb), and **(2)** the [MODIS/VIIRS Global Subset Tool](https://modis.ornl.gov/cgi-bin/MODIS/global/subset.pl) hosted by [ORNL DAAC](https://daac.ornl.gov/):
+
+![val](docs/img/browse0_validation.png)
 
 ## Notebooks
 <table>
@@ -38,6 +39,15 @@ Comprehensive Python workflow for calculating black-, white-, and blue-sky albed
     </tr>
 </table>
 
+## Inputs
+
+## MCD43A1
+An input MCD43A1 time series in netCDF format via AppEEARS. Or, if you don't have convenient Python environment you can batch download the HDFs from LPDAAC data pool. Go to the [inventory service](https://lpdaacsvc.cr.usgs.gov/services/inventory) page and figure out the query you need to get a list of HDFs. 
+
+I know there to be two MODIS tiles that fully contain the state of Florida (h10v05, h10v06), so I queried random points spread apart a bit to make sure I got both tiles. I covered this briefly in [0_Introduction]()
+
+
+`FIND this.. i did this convert really nicely once with shell/GDAL 2.x piping. old hdds in ut115.`
 
 ## Why?
 
