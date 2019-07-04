@@ -1,3 +1,5 @@
+If you're only here to learn about the blue sky albedo algorithm, the [Introduction](0_Introduction.ipynb) covers all of that information. Launch a live version in MyBinder: <a href="https://mybinder.org/v2/gh/jjmcnelis/mcd43a1-albedo-python/master?filepath=0_Introduction.ipynb"><img src="https://mybinder.org/badge_logo.svg" style="vertical-align:sub"></a>
+
 <!--
 *** Daily albedos from MODIS BRDF Parameters (MCD43A1)
 -->
@@ -13,7 +15,6 @@
 [![Contributors][contributors-shield]][contributors-url]
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
-
 
 <!-- PROJECT LOGO -->
 <br />
@@ -48,31 +49,23 @@
 
 </p>
 
-<!-- TABLE OF CONTENTS -->
-## Table of Contents
-
-- [Table of Contents](#Table-of-Contents)
-- [Overview](#Overview)
-- [Inputs](#Inputs)
-- [Outputs](#Outputs)
-- [License](#License)
-- [Contact](#Contact)
-
-<!-- BROWSE2 -->
-<figure class="image">
-  <img src="docs/img/fig2.png" alt="{{ include.description }}" style="display: block; margin-left: auto; margin-right: auto; width: 75%;">
-  <figcaption style="display: block; margin-left: auto; margin-right: auto; width: 60%; text-align:center"><i>Figure 2. Time series difference between black sky albedo computed by the ORNL DAAC MODIS Global Tool and this workflow as a way to validate my implementation of the albedo algorithm. Solar zenith angles are shown by the shaded region.</i></figcaption>
-</figure>
-
 <!-- ABOUT THE PROJECT -->
 ## Overview
 
 While some users are content to use the MODIS black sky albedo at local solar noon and the white sky albedo measures as provided in [MCD43A3](https://lpdaac.usgs.gov/dataset_discovery/modis/modis_products_table/mcd43a3_v006), most researchers want to make use of the BRDF/albedo model parameters to get  black sky albedo at different illumination angles or to combine the black sky and white sky albedo as a function of optical depth to get the blue sky albedo. This series of notebooks covers that process.
 
+<!-- BROWSE2 -->
+<figure class="image">
+  <img src="docs/img/fig2.png" alt="{{ include.description }}" style="display: block; margin-left: auto; margin-right: auto; width: 75%;">
+  <figcaption style="display: block; margin-left: auto; margin-right: auto; width: 85%; text-align:center"><i>Figure 2. Time series difference between black sky albedo computed by the ORNL DAAC MODIS Global Tool and this workflow as a way to validate my implementation of the albedo algorithm. Solar zenith angles are shown by the shaded region.</i></figcaption>
+</figure>
+
 <table>
+    <th>Notebook</th>
+    <th>Description</th>
     <tr>
-        <td style="text-align:left"><a href="0_Introduction.ipynb">0_Introduction.ipynb</a></p></td>
-        <td style="text-align:left">Interactive tutorial covers core concepts. Launch in MyBinder: <a href="https://mybinder.org/v2/gh/jjmcnelis/florida_usgs_albedo_evapotranspiration/master?filepath=0_Introduction.ipynb"><img src="https://mybinder.org/badge_logo.svg" style="vertical-align:sub"></a></td>
+        <td style="text-align:left"><a href="0_Introduction.ipynb">0_Introduction.ipynb</a></td>
+        <td style="text-align:left">Interactive tutorial covers core concepts. Launch it in MyBinder: <a href="https://mybinder.org/v2/gh/jjmcnelis/florida_usgs_albedo_evapotranspiration/master?filepath=0_Introduction.ipynb"><img src="https://mybinder.org/badge_logo.svg" style="vertical-align:sub; padding-left: 15px;"></a></td>
     </tr>
     <tr>
         <td style="text-align:left"><a href="1_Workflow.ipynb">1_Workflow.ipynb</a></td>
@@ -118,13 +111,11 @@ The figure and text below explain a little bit about how I validated the workflo
 
 The difference between our time series and the one computed by the ORNL DAAC (*see Figure 2 above*) is negligible, purely rounding error; and, if you check the plot above, it's obviously related to the zenith angle. The concave shape of the curve resembles the zenith angle change through the year. The disparity (see y-axis precision in scientific notation at the top of y1-axis) comes from the ORNL DAAC's zenith angle calculator. It returns five decimal places. I didn't do any rounding so we're using the max precision allowed by `numpy`, some huge number of decimal places.        
 
-
 <!-- BROWSE4 -->
 <figure class="image">
   <img src="docs/img/fig4.png" alt="{{ include.description }}" style="display: block; margin-left: auto; margin-right: auto;">
   <figcaption style="display: block; margin-left: auto; margin-right: auto; width: 55%; text-align:center"><i>Figure 4. Difference of black sky albedo rasters (2) for January 1, 2018: a. released in MCD43A3 standard product, and, b. computed in this workflow.</i></figcaption>
-</figure>       
-      
+</figure>
 
 Figure 4 depicts the differenced black sky albedo rasters for January 1, 2018 computed by **(1)** the SIPS for the standard black and white sky albedo product (MCD43A3) and **(2)** this workflow.
 
