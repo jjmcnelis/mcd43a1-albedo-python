@@ -2,10 +2,11 @@
 
 Comprehensive Python workflow for calculating black-, white-, and blue-sky albedos from the MODIS BRDF model parameters product ([MCD43A1](https://www.umb.edu/spectralmass/terra_aqua_modis/modis_brdf_albedo_product_mcd43)) using **custom solar zenith angles and optical depth** inputs. 
 
-The plot below depicts the *differenced* daily black sky albedo time series (2x) for a single pixel in central Florida as computed by: **(1)** *you* in the notebooks [1_Workflow.ipynb](1_Workflow.ipynb) and [2_Batch.ipynb](2_Batch.ipynb), and **(2)** the [MODIS/VIIRS Global Subset Tool](https://modis.ornl.gov/cgi-bin/MODIS/global/subset.pl) hosted by [ORNL DAAC](https://daac.ornl.gov/):
+The plot below depicts daily black sky albedo time series (x2) for a single pixel in central Florida as computed by: **(1)** us in the notebooks [1_Workflow.ipynb](1_Workflow.ipynb) and [2_Batch.ipynb](2_Batch.ipynb), and **(2)** the [MODIS/VIIRS Global Subset Tool](https://modis.ornl.gov/cgi-bin/MODIS/global/subset.pl) hosted by [ORNL DAAC](https://daac.ornl.gov/). The third plot depicts the *differenced* black sky albedo in **blue** and the *solar zenith angle* in **orange**.
 
-![val](docs/img/browse0_validation.png)
-*Continued: Our time series is identical to the ORNL DAAC's excluding rounding factors.* 
+![val](docs/img/browse_eval.png)
+
+Continued: Our time series is identical to the ORNL DAAC's excluding micro rounding error.
 
 The difference should be related to the zenith angle. The concave time series resembles the zenith angle curve in the northern hemisphere. 
 
