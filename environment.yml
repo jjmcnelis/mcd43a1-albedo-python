@@ -11,3 +11,5 @@ dependencies:
 - ipywidgets
 - cartopy
 - pyproj
+- cftime
+- nc-time-axis
