@@ -23,26 +23,26 @@ Some of these I've barely started on. `WIP == WORK IN PROGRESS`
     <tr>
         <td style="text-align:left"><a href="1_Workflow.ipynb">1_Workflow.ipynb</a></td>
         <td style="text-align:left">Process albedo model parameters to black, white, blue albedos</td>
-        <td style="text-align:center"><a href="https://mybinder.org/v2/gh/jjmcnelis/florida_usgs_albedo_evapotranspiration/master?filepath=1_Workflow.ipynb"><img src="https://mybinder.org/badge_logo.svg"></a></td>
+        <td style="text-align:center"></td>
     </tr>
     <tr>
         <td style="text-align:left"><a href="2_Batch.ipynb">2_Batch.ipynb</a></td>
         <td style="text-align:left">Bundle workflow into a few functions and loop</td>
-        <td style="text-align:center"><a href="https://mybinder.org/v2/gh/jjmcnelis/florida_usgs_albedo_evapotranspiration/master?filepath=2_Batch.ipynb"><img src="https://mybinder.org/badge_logo.svg"></a></td>
+        <td style="text-align:center"></td>
     </tr>
     <tr>
         <td style="text-align:left"><a href="3_Results.ipynb">3_Results.ipynb</a></td>
         <td style="text-align:left"> <b>WIP</b> Calculate statistics and plot</td>
-        <td style="text-align:center"><a href="https://mybinder.org/v2/gh/jjmcnelis/florida_usgs_albedo_evapotranspiration/master?filepath=3_Results.ipynb"><img src="https://mybinder.org/badge_logo.svg"></a></td>
+        <td style="text-align:center"></td>
     </tr>
     <tr>
         <td style="text-align:left"><a href="4_Validate.ipynb">4_Validate.ipynb</a></td>
         <td style="text-align:left">Check results against MCD43A3 albedos</td>
-        <td style="text-align:center"><a href="https://mybinder.org/v2/gh/jjmcnelis/florida_usgs_albedo_evapotranspiration/master?filepath=4_Validate.ipynb"><img src="https://mybinder.org/badge_logo.svg"></a></td>
+        <td style="text-align:center"></td>
     <tr>
         <td style="text-align:left"><a href="5_HDFs.ipynb">5_HDFs.ipynb</a></td>
         <td style="text-align:left"> <b>WIP</b> AppEEARS alternative, processing HDFs</td>
-        <td style="text-align:center"><a href="https://mybinder.org/v2/gh/jjmcnelis/florida_usgs_albedo_evapotranspiration/master?filepath=5_HDFs.ipynb"><img src="https://mybinder.org/badge_logo.svg"></a></td>
+        <td style="text-align:center"></td>
     </tr>
 </table>
 
@@ -81,3 +81,6 @@ You will receive an email upon order completion.
 While some users are content to use the MODIS black sky albedo at local solar noon and the white sky albedo measures as provided in [**MCD43A3**](https://lpdaac.usgs.gov/dataset_discovery/modis/modis_products_table/mcd43a3_v006), most researchers want to make use of the BRDF model parameters ([**MCD43A1**](https://lpdaac.usgs.gov/dataset_discovery/modis/modis_products_table/mcd43a1_v006)) to get  black sky albedo at different illumination angles or to combine the black sky and white sky albedo as a function of optical depth to get the blue sky albedo.
 
 ## How?
+
+Generate two-dimensional arrays of lats and lons:
+![coords](docs/img/coordinates.png)
