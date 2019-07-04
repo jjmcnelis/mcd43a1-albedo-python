@@ -18,27 +18,35 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
+
   <a href="https://github.com/jjmcnelis/mcd43a1-albedo-python">
     <img src="https://avatars1.githubusercontent.com/u/27017734?s=400&u=eefe777334306e1bcfcc26351b39d28e0631cc54&v=4" alt="Logo" width="80" height="80">
   </a>
 
+  <!-- HEADER -->
   <h3 align="center">Daily Albedo from MODIS BRDF/Albedo Parameters</h3>
-
+  
+  <!-- DESCRIPTION -->
   <p align="center">
-    A comprehensive workflow for calculating black-, white-, and blue-sky albedos from the MODIS BRDF model parameters product (MCD43A1) using custom solar zenith angles and optical depth inputs.
-    <br /><br />
+    A comprehensive workflow for calculating black, white, and blue sky albedos from the MODIS BRDF model parameters product (MCD43A1) using custom solar zenith angles and optical depth inputs.
+  </p>
+  
+  <!-- LINKS -->
+  <p align="center">
     <a href="https://github.com/jjmcnelis/mcd43a1-albedo-python"><strong>Explore the docs »</strong></a>
     · 
     <a href="https://github.com/jjmcnelis/mcd43a1-albedo-python/0_Introduction.ipynb">Interactive Tutorial</a>
     ·
     <a href="https://github.com/jjmcnelis/mcd43a1-albedo-python/issues">Report a Bug</a>
   </p>
+
+  <!-- BROWSE1 -->
+  <figure class="image">
+    <img src="docs/img/fig1.png" alt="{{ include.description }}" style="display: block; margin-left: auto; margin-right: auto; width: 75%;">
+    <figcaption style="display: block; margin-left: auto; margin-right: auto; width: 75%; text-align:center"><i>Figure 1. Time series blue, black, and white albedo for 2018 for one pixel in central Florida.</i></figcaption>
+  </figure>
+
 </p>
-http://192.168.1.135:8888/notebooks/0_Introduction.ipynb
-<figure class="image">
-  <img src="docs/img/browse_interact.png" alt="{{ include.description }}">
-  <figcaption><i>Interactive widgets like this one from the <a href="0_Introduction.ipynb#Blue-sky-albedo">introduction</a> help us understand the relationship between the computed albedo and its input parameters.</i></figcaption>
-</figure>
 
 <!-- TABLE OF CONTENTS -->
 ## Table of Contents
@@ -50,6 +58,11 @@ http://192.168.1.135:8888/notebooks/0_Introduction.ipynb
 - [License](#License)
 - [Contact](#Contact)
 
+<!-- BROWSE2 -->
+<figure class="image">
+  <img src="docs/img/fig2.png" alt="{{ include.description }}" style="display: block; margin-left: auto; margin-right: auto; width: 75%;">
+  <figcaption style="display: block; margin-left: auto; margin-right: auto; width: 75%; text-align:center"><i>Figure 2. Time series difference between black sky albedo computed by the ORNL DAAC MODIS Global Tool and this workflow as a way to validate my implementation of the albedo algorithm. Solar zenith angles for this location are shown by the shaded region.</i></figcaption>
+</figure>
 
 <!-- ABOUT THE PROJECT -->
 ## Overview
@@ -82,8 +95,15 @@ While some users are content to use the MODIS black sky albedo at local solar no
         <td style="text-align:left">AppEEARS alternative, processing HDFs. <b>(WIP)</b></td>
     </tr>
 </table>
+*Some of these I've barely started. `WIP == WORK IN PROGRESS`*
 
-Some of these I've barely started. `WIP == WORK IN PROGRESS`
+If you take a step back, there are quite a few steps required to go end to end with the processing all the way to blue sky albedo. Every step is documented such that an absolute beginner should be able to understand with a little bit of homework. For example, we look at the relationships between coordinate systems and the geographic coordinate space in the second notebook ([1_Workflow.ipynb](1_Workflow.ipynb#)):
+
+<!-- BROWSE3 -->
+<figure class="image">
+  <img src="docs/img/fig3.png" alt="{{ include.description }}" style="display: block; margin-left: auto; margin-right: auto; width: 75%;">
+  <figcaption style="display: block; margin-left: auto; margin-right: auto; width: 75%; text-align:center"><i>Figure 3. Gridded coordinate values in MODIS sinusoidal projection (1 and 3) and geographic latitude and longitude (2 and 4).</i></figcaption>
+</figure>
 
 ## Inputs  
 
@@ -94,20 +114,18 @@ You have two options:
 Go to the [first notebook (1_Workflow.ipynb)](1_Workflow.ipynb) for more details about data access.
 
 ## Outputs
-The result of the black sky albedo calculation for a sample pixel is reviewed briefly below.
+The figure and text below explain a little bit about how I validated the workflow against MCD43A1 albedos computed by the ORNL DAAC's MODIS Global Tool (Figure 2) and the standard black and white sky albedos from the MCD43A3 product (Figure 3).
+
+*See Figure 2 (above)*
+The difference between our time series and the one computed by the ORNL DAAC is negligible, purely rounding error; and, if you check the plot above, it's obviously related to the zenith angle. The concave shape of the curve resembles the zenith angle change through the year. The disparity (see y-axis precision in scientific notation at the top of y1-axis) comes from the ORNL DAAC's zenith angle calculator. It returns five decimal places. I didn't do any rounding so we're using the max precision allowed by `numpy`, some huge number of decimal places.
+
+Figure 3 depicts the differenced black sky albedo rasters for January 1, 2018 computed by **(1)** the SIPS for the standard black and white sky albedo product (MCD43A3) and **(2)** this workflow.
+
+<!-- BROWSE4 -->
 <figure class="image">
-  <img src="docs/img/browse_eval.png" alt="{{ include.description }}">
-  <figcaption><i>Plots of daily black sky albedo computed by (1) ORNL DAAC backend and (2) by this workflow, as well as (3) the difference of the two and zenith angles plotted by day of the year.</i></figcaption>
+  <img src="docs/img/fig4.png" alt="{{ include.description }}" style="display: block; margin-left: auto; margin-right: auto; width: 75%;">
+  <figcaption style="display: block; margin-left: auto; margin-right: auto; width: 75%; text-align:center"><i>Figure 3. The difference of the black sky albedo rasters for January 1, 2018 computed for the MCD43A3 standard product and by this workflow.</i></figcaption>
 </figure>
-
-The plots above depict daily black sky albedo time series (x2) for a single pixel in central Florida as computed:
-
-1. using the first two notebooks in this series ([1_Workflow.ipynb](1_Workflow.ipynb), [2_Batch.ipynb](2_Batch.ipynb)), and,       
-2. by the [MODIS/VIIRS Global Subset Tool](https://modis.ornl.gov/cgi-bin/MODIS/global/subset.pl) hosted by [ORNL DAAC](https://daac.ornl.gov/).        
-
-The third plot depicts the *differenced* black sky albedo in **blue** and the *solar zenith angle* in **orange**.
-
-Our time series is identical to the ORNL DAAC's excluding micro rounding error. The difference should be related to the zenith angle. The concave time series resembles the zenith angle curve in the northern hemisphere. The disparity (see y-axis precision) comes from the ORNL DAAC's zenith angle calculator. It returns five decimal places. I didn't do any rounding so we're using the max precision allowed by `numpy`.
 
 <!-- LICENSE -->
 ## License
