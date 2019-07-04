@@ -41,23 +41,15 @@ The plot below depicts the *differenced* daily black sky albedo time series (2x)
 
 ## Inputs
 
-## MCD43A1
-An input MCD43A1 time series in netCDF format via AppEEARS. Or, if you don't have convenient Python environment you can batch download the HDFs from LPDAAC data pool. Go to the [inventory service](https://lpdaacsvc.cr.usgs.gov/services/inventory) page and figure out the query you need to get a list of HDFs. 
+### MCD43A1    
 
-I know there to be two MODIS tiles that fully contain the state of Florida (h10v05, h10v06), so I queried random points spread apart a bit to make sure I got both tiles. I covered this briefly in [0_Introduction]()
+Two options:
+1. Input MCD43A1 time series in netCDF format via [AppEEARS](https://lpdaac.usgs.gov/tools/data_access/appeears). Or, if you don't have convenient Python environment 
+2. you can batch download the HDFs from LP DAAC data pool by following the steps in [5_HDFs.ipynb](5_HDFs.ipynb).
 
+AppEEARS is web interface for requesting subsets from LP DAAC's data pool. The notebooks assume you used AppEEARS to get the subset. You need to sign up for a NASA Earthdata account. It was just convenient to have the subset come out in the shape of Florida like I wanted.
 
-`FIND this.. i did this convert really nicely once with shell/GDAL 2.x piping. old hdds in ut115.`
-
-## Why?
-
-While some users are content to use the MODIS black sky albedo at local solar noon and the white sky albedo measures as provided in [**MCD43A3**](https://lpdaac.usgs.gov/dataset_discovery/modis/modis_products_table/mcd43a3_v006), most researchers want to make use of the BRDF model parameters ([**MCD43A1**](https://lpdaac.usgs.gov/dataset_discovery/modis/modis_products_table/mcd43a1_v006)) to get  black sky albedo at different illumination angles or to combine the black sky and white sky albedo as a function of optical depth to get the blue sky albedo.
-
-## How?
-
-[AppEEARS](https://lpdaac.usgs.gov/tools/data_access/appeears) is a data access at the LP DAAC that makes spatial and temporal subsets of a variety of remote sensing and model data. You need a NASA Earthdata account to use AppEEARS.
-
-To request a compatible subset, choose **Area Sample** from the **Extract** button in AppEEARS. Click **Start a new request**. 
+To request a subset, choose **Area Sample** from the **Extract** button in AppEEARS. Click **Start a new request**. 
 1. Provide a name for your sample.
 2. Choose a spatial extent by either uploading an ESRI Shapefile or GeoJSON, or by drawing a box/polygon on the map.
 3. Choose a temporal extent for the subset.
@@ -75,3 +67,10 @@ To request a compatible subset, choose **Area Sample** from the **Extract** butt
 7. For ***Projection***, choose **Geographic**.
 
 You will receive an email upon order completion.
+
+
+## Why?
+
+While some users are content to use the MODIS black sky albedo at local solar noon and the white sky albedo measures as provided in [**MCD43A3**](https://lpdaac.usgs.gov/dataset_discovery/modis/modis_products_table/mcd43a3_v006), most researchers want to make use of the BRDF model parameters ([**MCD43A1**](https://lpdaac.usgs.gov/dataset_discovery/modis/modis_products_table/mcd43a1_v006)) to get  black sky albedo at different illumination angles or to combine the black sky and white sky albedo as a function of optical depth to get the blue sky albedo.
+
+## How?
