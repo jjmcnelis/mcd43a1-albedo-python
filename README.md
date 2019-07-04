@@ -61,7 +61,7 @@
 <!-- BROWSE2 -->
 <figure class="image">
   <img src="docs/img/fig2.png" alt="{{ include.description }}" style="display: block; margin-left: auto; margin-right: auto; width: 75%;">
-  <figcaption style="display: block; margin-left: auto; margin-right: auto; width: 75%; text-align:center"><i>Figure 2. Time series difference between black sky albedo computed by the ORNL DAAC MODIS Global Tool and this workflow as a way to validate my implementation of the albedo algorithm. Solar zenith angles for this location are shown by the shaded region.</i></figcaption>
+  <figcaption style="display: block; margin-left: auto; margin-right: auto; width: 75%; text-align:center"><i>Figure 2. Time series difference between black sky albedo computed by the ORNL DAAC MODIS Global Tool and this workflow as a way to validate my implementation of the albedo algorithm. Solar zenith angles are shown by the shaded region.</i></figcaption>
 </figure>
 
 <!-- ABOUT THE PROJECT -->
@@ -95,7 +95,7 @@ While some users are content to use the MODIS black sky albedo at local solar no
         <td style="text-align:left">AppEEARS alternative, processing HDFs. <b>(WIP)</b></td>
     </tr>
 </table>
-*Some of these I've barely started. `WIP == WORK IN PROGRESS`*
+I've barely started a couple of these (`WIP`). Stay tuned.
 
 If you take a step back, there are quite a few steps required to go end to end with the processing all the way to blue sky albedo. Every step is documented such that an absolute beginner should be able to understand with a little bit of homework. For example, we look at the relationships between coordinate systems and the geographic coordinate space in the second notebook ([1_Workflow.ipynb](1_Workflow.ipynb#)):
 
@@ -116,16 +116,15 @@ Go to the [first notebook (1_Workflow.ipynb)](1_Workflow.ipynb) for more details
 ## Outputs
 The figure and text below explain a little bit about how I validated the workflow against MCD43A1 albedos computed by the ORNL DAAC's MODIS Global Tool (Figure 2) and the standard black and white sky albedos from the MCD43A3 product (Figure 3).
 
-*See Figure 2 (above)*
-The difference between our time series and the one computed by the ORNL DAAC is negligible, purely rounding error; and, if you check the plot above, it's obviously related to the zenith angle. The concave shape of the curve resembles the zenith angle change through the year. The disparity (see y-axis precision in scientific notation at the top of y1-axis) comes from the ORNL DAAC's zenith angle calculator. It returns five decimal places. I didn't do any rounding so we're using the max precision allowed by `numpy`, some huge number of decimal places.
-
-Figure 3 depicts the differenced black sky albedo rasters for January 1, 2018 computed by **(1)** the SIPS for the standard black and white sky albedo product (MCD43A3) and **(2)** this workflow.
+The difference between our time series and the one computed by the ORNL DAAC (*see Figure 2 above*) is negligible, purely rounding error; and, if you check the plot above, it's obviously related to the zenith angle. The concave shape of the curve resembles the zenith angle change through the year. The disparity (see y-axis precision in scientific notation at the top of y1-axis) comes from the ORNL DAAC's zenith angle calculator. It returns five decimal places. I didn't do any rounding so we're using the max precision allowed by `numpy`, some huge number of decimal places.
 
 <!-- BROWSE4 -->
-<figure class="image">
-  <img src="docs/img/fig4.png" alt="{{ include.description }}" style="display: block; margin-left: auto; margin-right: auto; width: 75%;">
-  <figcaption style="display: block; margin-left: auto; margin-right: auto; width: 75%; text-align:center"><i>Figure 3. The difference of the black sky albedo rasters for January 1, 2018 computed for the MCD43A3 standard product and by this workflow.</i></figcaption>
-</figure>
+<p><figure class="image">
+  <img src="docs/img/fig4.png" alt="{{ include.description }}" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
+  <figcaption style="display: block; margin-left: auto; margin-right: auto; width: 75%; text-align:center"><i>Figure 4. Difference of black sky albedo rasters (2) for January 1, 2018: a. released in MCD43A3 standard product, and, b. computed in this workflow.</i></figcaption>
+</figure></p>
+
+Figure 3 depicts the differenced black sky albedo rasters for January 1, 2018 computed by **(1)** the SIPS for the standard black and white sky albedo product (MCD43A3) and **(2)** this workflow.
 
 <!-- LICENSE -->
 ## License
