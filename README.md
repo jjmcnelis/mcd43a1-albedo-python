@@ -1,4 +1,5 @@
 If you're only here to learn about the blue sky albedo algorithm, the [Introduction](0_Introduction.ipynb) covers all of that information. Launch a live version in MyBinder: <a href="https://mybinder.org/v2/gh/jjmcnelis/mcd43a1-albedo-python/master?filepath=0_Introduction.ipynb"><img src="https://mybinder.org/badge_logo.svg" style="vertical-align:sub"></a>
+<hr>
 
 <!--
 *** Daily albedos from MODIS BRDF Parameters (MCD43A1)
@@ -26,26 +27,28 @@ If you're only here to learn about the blue sky albedo algorithm, the [Introduct
 
   <!-- HEADER -->
   <h3 align="center">Daily Albedo from MODIS BRDF/Albedo Parameters</h3>
-  
+
   <!-- DESCRIPTION -->
-  <p align="center">
+  <p style="display: block; margin-left: auto; margin-right: auto; width: 70%; text-align:center">
     A comprehensive workflow for calculating black, white, and blue sky albedos from the MODIS BRDF model parameters product (MCD43A1) using custom solar zenith angles and optical depth inputs.
   </p>
-  
+
   <!-- LINKS -->
   <p align="center">
-    <a href="https://github.com/jjmcnelis/mcd43a1-albedo-python"><strong>Explore the docs »</strong></a>
-    · 
-    <a href="https://github.com/jjmcnelis/mcd43a1-albedo-python/0_Introduction.ipynb">Interactive Tutorial</a>
-    ·
+    <a href="https://github.com/jjmcnelis/mcd43a1-albedo-python"><strong>Explore the docs »</strong></a> · 
+    <a href="https://mybinder.org/v2/gh/jjmcnelis/mcd43a1-albedo-python/master?filepath=0_Introduction.ipynb">Interactive Tutorial</a> ·
     <a href="https://github.com/jjmcnelis/mcd43a1-albedo-python/issues">Report a Bug</a>
   </p>
-
+  
   <!-- BROWSE1 -->
   <figure class="image">
     <img src="docs/img/fig1.png" alt="{{ include.description }}" style="display: block; margin-left: auto; margin-right: auto; width: 75%;">
-    <figcaption style="display: block; margin-left: auto; margin-right: auto; width: 75%; text-align:center"><i>Figure 1. Time series blue, black, and white albedo for 2018 for one pixel in central Florida.</i></figcaption>
+    <figcaption style="display: block; margin-left: auto; margin-right: auto; width: 75%; text-align:center">
+      <i>Figure 1. Time series blue, black, and white albedo for 2018 for one pixel in central Florida.</i>
+    </figcaption>
   </figure>
+
+
 
 </p>
 
@@ -60,7 +63,9 @@ While some users are content to use the MODIS black sky albedo at local solar no
   <figcaption style="display: block; margin-left: auto; margin-right: auto; width: 85%; text-align:center"><i>Figure 2. Time series difference between black sky albedo computed by the ORNL DAAC MODIS Global Tool and this workflow as a way to validate my implementation of the albedo algorithm. Solar zenith angles are shown by the shaded region.</i></figcaption>
 </figure>
 
-<table>
+## Notebooks
+The entire process to implement the albedo algorithm in Python is documented in these notebooks:
+<table style="display: block; margin-left: auto; margin-right: auto; width: 85%; text-align:center">
     <th>Notebook</th>
     <th>Description</th>
     <tr>
@@ -81,14 +86,16 @@ While some users are content to use the MODIS black sky albedo at local solar no
     </tr>
     <tr>
         <td style="text-align:left"><a href="4_Results.ipynb">4_Results.ipynb</a></td>
-        <td style="text-align:left">Calculate stats and plot. Also write outputs for Florida USGS evapotranspiration model. <b>(WIP)</b></td>
+        <td style="text-align:left">Calculate stats and plot. Also write outputs for Florida USGS evapotranspiration model. (<code>WIP</code>)</td>
     </tr>
     <tr>
         <td style="text-align:left"><a href="5_HDFs.ipynb">5_HDFs.ipynb</a></td>
-        <td style="text-align:left">AppEEARS alternative, processing HDFs. <b>(WIP)</b></td>
+        <td style="text-align:left">AppEEARS alternative, processing HDFs. (<code>WIP</code>)</td>
     </tr>
+    <tr><td colspan=2><i>Some of these I've barely started </i>(<code>WIP</code>)<i>. Stay tuned.</i></td></tr>
 </table>
-I've barely started a couple of these (`WIP`). Stay tuned.
+
+
 
 If you take a step back, there are quite a few steps required to go end to end with the processing all the way to blue sky albedo. Every step is documented such that an absolute beginner should be able to understand with a little bit of homework. For example, we look at the relationships between coordinate systems and the geographic coordinate space in the second notebook ([1_Workflow.ipynb](1_Workflow.ipynb#)):
 
