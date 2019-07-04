@@ -5,7 +5,7 @@ MODIS MCD43A1 Albedo
 from ipywidgets import FloatSlider, interact
 from pyproj import Proj, transform
 from math import radians, cos
-from io import StringIO
+from io import StringIO as sio
 import xarray as xr   
 import pandas as pd
 import numpy as np
@@ -202,25 +202,45 @@ def blue(wsa, bsa, lookup):
 # introduction only
 #############################################################################
 
-
 # ---------------------------------------------------------------------------
 # prep
-# ---------------------------------------------------------------------------
 
+# band name getter
 get_band_name = lambda ds:[v for v in ds.variables if all([
     "param" in ds[v].dims, v!="param"])][0]
 
-
+# read skyl_lut.dat
 with open("data/skyl_lut.dat", "r") as f:
     tab = f.read().replace("  ", " ")
+
+# split lookup table into continental and maritime
 con, mar = [t.split("Band") for t in tab.split("Aerosol_type: ")[1:]]
-get_lut = lambda s: pd.read_csv(
-    StringIO(s),
-    index_col="S&O",
-    skiprows=1,
-    sep=" ")
+
+# band label getter
+get_lab = lambda n: n.split("_")[-1]
+
+# lookup value getter
+get_lut = lambda s: pd.read_csv(sio(s), index_col="S&O", skiprows=1, sep=" ")
+
+# zenith angle getter
+fz  = lambda t, l: sza_eval(t.dt.dayofyear, l.data[0][0])
+
+
+def prep(filename):
+    """ """
+    
+    px = xr.open_dataset(filename)
+    bands = [v for v in px.variables if "BRDF_Albedo_Parameters_" in v]
+    for i, band in enumerate(bands):
+        px[band].attrs["lookup"] = get_lut(con[i+1])
+    
+    lat, lon = get_coordinates(px)
+    px.coords["lat"] = lat
+    px.coords["lon"] = lon
+    sza = np.array([fz(t, lat) for t in px.time])
+    
+    return(px, sza, bands)
 
 
 # ---------------------------------------------------------------------------
 # plot
-# ---------------------------------------------------------------------------

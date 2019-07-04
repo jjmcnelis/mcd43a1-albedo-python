@@ -13,12 +13,23 @@ The difference should be related to the zenith angle. The concave time series re
 I can tell you with a lot of confidence that the tiny disparity (see y-axis precision) between the two time series comes from the ORNL DAAC's solar zenith angle calculator because it returns five decimal places. We're using the max precision allowed by `numpy` for our number.
 
 ## Notebooks
-Some of these I've barely started on. `WIP == WORK IN PROGRESS`
+Some of these I've barely started. `WIP == WORK IN PROGRESS`
 <table>
     <tr>
-        <td style="text-align:left"><a href="0_Introduction.ipynb">0_Introduction.ipynb</a></td>
-        <td style="text-align:left"> <b>WIP</b> Fundamental concepts explained.</b></td>
-        <td style="text-align:center"><a href="https://mybinder.org/v2/gh/jjmcnelis/florida_usgs_albedo_evapotranspiration/master?filepath=0_Introduction.ipynb"><img src="https://mybinder.org/badge_logo.svg"></a></td>
+        <td style="text-align:left">
+            <p><a href="0_Introduction.ipynb"><b>0_Introduction.ipynb</b></a></p>
+            <p>
+                Fundamental concepts explained.
+                <br>
+                1. <br>
+                2. <br>
+                3. <br>
+                4. <br>
+                <br>
+                Launch live in MyBinder: <br><a href="https://mybinder.org/v2/gh/jjmcnelis/florida_usgs_albedo_evapotranspiration/master?filepath=0_Introduction.ipynb"><img src="https://mybinder.org/badge_logo.svg" style="vertical-align:sub"></a>
+            </p>
+        </td>
+        <td style="text-align:center" width="40%"><a href="docs/img/browse_interact.png"><img src="docs/img/browse_interact.png" width="70%"></a></td>
     </tr>
     <tr>
         <td style="text-align:left"><a href="1_Workflow.ipynb">1_Workflow.ipynb</a></td>
