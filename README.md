@@ -33,7 +33,7 @@ Comprehensive Python workflow for calculating black-, white-, and blue-sky albed
         <td style="text-align:center"><a href="https://mybinder.org/v2/gh/jjmcnelis/florida_usgs_albedo_evapotranspiration/master?filepath=4_Validate.ipynb"><img src="https://mybinder.org/badge_logo.svg"></a></td>
     <tr>
         <td style="text-align:left"><a href="5_HDFs.ipynb">5_HDFs.ipynb</a></td>
-        <td style="text-align:left">AppEEARS alternative. Examples get you started processing HDFs</td>
+        <td style="text-align:left">AppEEARS alternative, processing HDFs</td>
         <td style="text-align:center"><a href="https://mybinder.org/v2/gh/jjmcnelis/florida_usgs_albedo_evapotranspiration/master?filepath=5_HDFs.ipynb"><img src="https://mybinder.org/badge_logo.svg"></a></td>
     </tr>
 </table>

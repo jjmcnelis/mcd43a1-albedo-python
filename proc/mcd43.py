@@ -2,6 +2,7 @@
 MODIS MCD43A1 Albedo
 """
 
+from ipywidgets import FloatSlider, interact
 from pyproj import Proj, transform
 from math import radians, cos
 from io import StringIO
@@ -12,13 +13,12 @@ import datetime
 import sys
 import os
 
-import ipywidgets as pw
 import matplotlib.pyplot as plt
 import matplotlib
 matplotlib.rc('font', **{
     'family': 'normal', 
-    'weight': 'normal', 
-    'size': 14})
+    'weight': 'bold', 
+    'size': 8})
 
 # ---------------------------------------------------------------------- 
 # coordinate + sza functions
@@ -55,7 +55,8 @@ def get_latlon(ds, inproj, outproj):
 
 
 def get_solar_zenith(doy, latitude, ndoy=365):
-    """ """
+    """Calculate solar zenith angle (1) at local 
+    noon for input day of the year and latitude."""
     declination = cos(radians((doy+10)*(360/ndoy)))*-23.45
     altitude = 90 - latitude + declination
     zenith = 90 - altitude
@@ -66,6 +67,41 @@ def sza_eval(doy, lat):
     """Convert CF to Python datetime."""
     func = lambda l: get_solar_zenith(doy, l)
     return(xr.apply_ufunc(func, lat))
+
+
+def get_sza(ds):
+    """Calculate solar zenith angles vectorized at local 
+    noon for input day of the year and latitude."""
+    sza = xr.DataArray(
+        data=np.dstack([sza_eval(t.dt.dayofyear, ds.lat) for t in ds.time]), 
+        coords=[ds.y, ds.x, ds.time],       # note that we reorder coords in
+        dims=["y", "x", "time"],            # dims argument to match others
+        attrs=dict(
+            units="degree",
+            standard_name="solar zenith angle",
+            long_name="solar zenith angle"))
+    sza.name = "solar_zenith_angle"
+    sza = sza.transpose("time", "y", "x")
+    
+    return(sza)
+
+
+# ----------------------------------------------------------------------------
+# ALBEDO
+# ----------------------------------------------------------------------------
+
+
+albedo_attributes = dict(
+    _FillValue=32767,
+    grid_mapping="crs",
+    valid_min=0,
+    valid_max=32766,
+    units="reflectance, no units",
+    scale_factor_err=0.0,
+    add_offset_err=0.0,
+    calibrated_nt=5,
+    scale_factor=0.001,
+    add_offset=0.0)
 
 
 # ---------------------------------------------------------------------- 
@@ -86,7 +122,7 @@ def get_coordinates(ds):
         long_name="latitude coordinate",
         units="degrees_north")
 
-    ds.coords["lat"] = xr.DataArray(
+    lat = xr.DataArray(
         data=lat2d, 
         coords=[ds.y, ds.x], 
         dims=["y", "x"], 
@@ -97,13 +133,13 @@ def get_coordinates(ds):
         long_name="longitude coordinate",
         units="degrees_east")
 
-    ds.coords["lon"] = xr.DataArray(
+    lon = xr.DataArray(
         data=lon2d, 
         coords=[ds.y, ds.x], 
         dims=["y", "x"], 
         attrs=lonatts)
     
-    return(ds)
+    return(lat, lon)
 
 
 # ---------------------------------------------------------------------------
@@ -188,23 +224,3 @@ get_lut = lambda s: pd.read_csv(
 # ---------------------------------------------------------------------------
 # plot
 # ---------------------------------------------------------------------------
-
-
-def PlotAlbedo(i, px, alb):
-    """ """
-    
-    band_names = [v for v in px.variables if "Parameters" in v]; band_names
-    time, sza = px["time"], px["sza"]   
-    funcs = {
-        "black": lambda p1, p2, p3: black(p1, p2, p3, sza),
-        "white": lambda p1, p2, p3: white(p1, p2, p3),
-        #"blue": lambda p1, p2, p3: blue()
-        }
-    
-    plt.figure(num=i, figsize=(14, 4), dpi=80, facecolor='w', edgecolor='k')
-
-    #plt.xlim(time[0].data, time[-1].data)       # set x limits
-    plt.legend(loc=(1.01, 0), borderpad=0.75)   # add legend
-    plt.ylabel("black sky albedo [unitless]")   # add ylabel 
-    
-    plt.show()
