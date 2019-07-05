@@ -26,7 +26,7 @@ If you're only here to learn about the blue sky albedo algorithm, the [Introduct
   </a>
 
   <!-- HEADER -->
-  <h3 align="center">Daily Albedo from MODIS BRDF/Albedo Parameters</h3>
+  <h2 align="center">Daily Albedo from MODIS BRDF/Albedo Parameters</h2>
 
   <!-- DESCRIPTION -->
   <p style="display: block; margin-left: auto; margin-right: auto; width: 70%; text-align:center">
@@ -147,4 +147,4 @@ Jack McNelis - jjmcnelis@outlook.com
 [license-url]: https://choosealicense.com/licenses/mit/
 
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/jjmcnelis
+[linkedin-url]: https://linkedin.com/in/jack-mcnelis
