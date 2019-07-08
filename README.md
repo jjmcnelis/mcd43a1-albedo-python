@@ -69,27 +69,27 @@ The entire process to implement the albedo algorithm in Python is documented in 
     <th>Notebook</th>
     <th>Description</th>
     <tr>
-        <td style="text-align:left"><a href="0_Introduction.ipynb">0_Introduction.ipynb</a></td>
+        <td style="text-align:left"><a href="https://nbviewer.jupyter.org/github/jjmcnelis/mcd43a1-albedo-python/blob/master/0_Introduction.ipynb">0_Introduction.ipynb</a></td>
         <td style="text-align:left">Interactive tutorial covers core concepts. Launch it in MyBinder: <a href="https://mybinder.org/v2/gh/jjmcnelis/florida_usgs_albedo_evapotranspiration/master?filepath=0_Introduction.ipynb"><img src="https://mybinder.org/badge_logo.svg" style="vertical-align:sub; padding-left: 15px;"></a></td>
     </tr>
     <tr>
-        <td style="text-align:left"><a href="1_Workflow.ipynb">1_Workflow.ipynb</a></td>
+        <td style="text-align:left"><a href="https://nbviewer.jupyter.org/github/jjmcnelis/mcd43a1-albedo-python/blob/master/1_Workflow.ipynb">1_Workflow.ipynb</a></td>
         <td style="text-align:left">Process albedo model parameters to black, white, blue albedos.</td>
     </tr>
     <tr>
-        <td style="text-align:left"><a href="2_Batch.ipynb">2_Batch.ipynb</a></td>
+        <td style="text-align:left"><a href="https://nbviewer.jupyter.org/github/jjmcnelis/mcd43a1-albedo-python/blob/master/2_Batch.ipynb">2_Batch.ipynb</a></td>
         <td style="text-align:left">Bundle workflow into a few functions and loop.</td>
     </tr>
     <tr>
-        <td style="text-align:left"><a href="3_Validate.ipynb">3_Validate.ipynb</a></td>
+        <td style="text-align:left"><a href="https://nbviewer.jupyter.org/github/jjmcnelis/mcd43a1-albedo-python/blob/master/3_Validate.ipynb">3_Validate.ipynb</a></td>
         <td style="text-align:left">Check results against MCD43A3 albedos.</td>
     </tr>
     <tr>
-        <td style="text-align:left"><a href="4_Results.ipynb">4_Results.ipynb</a></td>
+        <td style="text-align:left"><a href="https://nbviewer.jupyter.org/github/jjmcnelis/mcd43a1-albedo-python/blob/master/4_Results.ipynb">4_Results.ipynb</a></td>
         <td style="text-align:left">Calculate stats and plot. Also write outputs for Florida USGS evapotranspiration model. (<code>WIP</code>)</td>
     </tr>
     <tr>
-        <td style="text-align:left"><a href="5_HDFs.ipynb">5_HDFs.ipynb</a></td>
+        <td style="text-align:left"><a href="https://nbviewer.jupyter.org/github/jjmcnelis/mcd43a1-albedo-python/blob/master/5_HDFs.ipynb">5_HDFs.ipynb</a></td>
         <td style="text-align:left">AppEEARS alternative, processing HDFs. (<code>WIP</code>)</td>
     </tr>
     <tr><td colspan=2><i>Some of these I've barely started </i>(<code>WIP</code>)<i>. Stay tuned.</i></td></tr>
