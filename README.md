@@ -1,6 +1,3 @@
-If you're only here to learn about the blue sky albedo algorithm, the [Introduction](0_Introduction.ipynb) covers all of that information. Launch a live version in MyBinder: <a href="https://mybinder.org/v2/gh/jjmcnelis/mcd43a1-albedo-python/master?filepath=0_Introduction.ipynb"><img src="https://mybinder.org/badge_logo.svg" style="vertical-align:sub"></a>
-<hr>
-
 <!--
 *** Daily albedos from MODIS BRDF Parameters (MCD43A1)
 -->
