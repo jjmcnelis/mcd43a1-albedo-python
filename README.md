@@ -52,7 +52,7 @@
 <!-- ABOUT THE PROJECT -->
 ## Overview
 
-While some users are content to use the MODIS black sky albedo at local solar noon and the white sky albedo measures as provided in [MCD43A3](https://lpdaac.usgs.gov/dataset_discovery/modis/modis_products_table/mcd43a3_v006), most researchers want to make use of the BRDF/albedo model parameters to get  black sky albedo at different illumination angles or to combine the black sky and white sky albedo as a function of optical depth to get the blue sky albedo. This series of notebooks covers that process.
+Use BRDF/albedo model parameters to get black sky albedo at different illumination angles or to combine the black sky and white sky albedo as a function of optical depth to get the blue sky albedo. This series of notebooks covers that process.
 
 <!-- BROWSE2 -->
 <figure class="image">
