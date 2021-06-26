@@ -92,16 +92,6 @@ The entire process to implement the albedo algorithm in Python is documented in 
     <tr><td colspan=2><i>Some of these I've barely started </i>(<code>WIP</code>)<i>. Stay tuned.</i></td></tr>
 </table>
 
-
-
-If you take a step back, there are quite a few steps required to go end to end with the processing all the way to blue sky albedo. Every step is documented such that an absolute beginner should be able to understand with a little bit of homework. For example, we look at the relationships between coordinate systems and the geographic coordinate space in the second notebook ([1_Workflow.ipynb](1_Workflow.ipynb#)):
-
-<!-- BROWSE3 -->
-<figure class="image">
-  <img src="docs/img/fig3.png" alt="{{ include.description }}" style="display: block; margin-left: auto; margin-right: auto; width: 75%;">
-  <figcaption style="display: block; margin-left: auto; margin-right: auto; width: 55%; text-align:center"><i>Figure 3. Gridded coordinate values in MODIS sinusoidal projection (1 and 3) and geographic latitude and longitude (2 and 4).</i></figcaption>
-</figure>
-
 ## Inputs  
 
 You have two options:
