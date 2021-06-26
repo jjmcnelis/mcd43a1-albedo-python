@@ -103,7 +103,7 @@ Go to the [first notebook (1_Workflow.ipynb)](1_Workflow.ipynb) for more details
 ## Outputs
 The figure and text below explain a little bit about how I validated the workflow against MCD43A1 albedos computed by the ORNL DAAC's MODIS Global Tool (Figure 2) and the standard black and white sky albedos from the MCD43A3 product (Figure 4).
 
-The difference between our time series and the one computed by the ORNL DAAC (*see Figure 2 above*) is negligible, purely rounding error; and, if you check the plot above, it's obviously related to the zenith angle. The concave shape of the curve resembles the zenith angle change through the year. The disparity (see y-axis precision in scientific notation at the top of y1-axis) comes from the ORNL DAAC's zenith angle calculator. It returns five decimal places. I didn't do any rounding so we're using the max precision allowed by `numpy`, some huge number of decimal places.        
+The difference between our time series and the one computed by the ORNL DAAC (*see Figure 2 above*) is negligible. I believe the disparity (see y-axis precision) comes from difference in decimal precision used in the solar zenith angle calculators for this workflow and at the DAAC.        
 
 <!-- BROWSE4 -->
 <figure class="image">
